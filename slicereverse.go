@@ -5,7 +5,7 @@ import "reflect"
 func SliceReserve(slice interface{}) (result []interface{}) {
 	arrV := reflect.ValueOf(slice)
 	if arrV.Kind() != reflect.Slice {
-		return
+		panic("parameter should be a slice")
 	}
 	for i := arrV.Len() - 1; i >= 0; i-- {
 		result = append(result, arrV.Index(i).Interface())

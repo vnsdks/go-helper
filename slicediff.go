@@ -5,10 +5,10 @@ import (
 	"strings"
 )
 
-func SliceDiff(slice1 interface{}, slices ...interface{}) (result []interface{}) {
-	arrV := reflect.ValueOf(slice1)
+func SliceDiff(mainSlice interface{}, slices ...interface{}) (result []interface{}) {
+	arrV := reflect.ValueOf(mainSlice)
 	if arrV.Kind() != reflect.Slice {
-		return
+		panic("parameters should be slices")
 	}
 	comparer := SliceMergeUnique(slices...)
 	for i := 0; i < arrV.Len(); i++ {
@@ -22,14 +22,14 @@ func SliceDiff(slice1 interface{}, slices ...interface{}) (result []interface{})
 	return
 }
 
-func SliceDiffString(slice1 []string, slices ...[]string) (result []string) {
+func SliceDiffString(mainSlice []string, slices ...[]string) (result []string) {
 	checker := make(map[string]struct{}, 0)
 	for _, slice := range slices {
 		for _, element := range slice {
 			checker[element] = struct{}{}
 		}
 	}
-	for _, element := range slice1 {
+	for _, element := range mainSlice {
 		if _, ok := checker[element]; ok {
 			continue
 		}
@@ -39,14 +39,14 @@ func SliceDiffString(slice1 []string, slices ...[]string) (result []string) {
 	return
 }
 
-func SliceDiffStringInsensitive(slice1 []string, slices ...[]string) (result []string) {
+func SliceDiffStringInsensitive(mainSlice []string, slices ...[]string) (result []string) {
 	checker := make(map[string]struct{}, 0)
 	for _, slice := range slices {
 		for _, element := range slice {
 			checker[strings.ToLower(element)] = struct{}{}
 		}
 	}
-	for _, element := range slice1 {
+	for _, element := range mainSlice {
 		if _, ok := checker[strings.ToLower(element)]; ok {
 			continue
 		}
@@ -56,14 +56,14 @@ func SliceDiffStringInsensitive(slice1 []string, slices ...[]string) (result []s
 	return
 }
 
-func SliceDiffInt(slice1 []int, slices ...[]int) (result []int) {
+func SliceDiffInt(mainSlice []int, slices ...[]int) (result []int) {
 	checker := make(map[int]struct{}, 0)
 	for _, slice := range slices {
 		for _, element := range slice {
 			checker[element] = struct{}{}
 		}
 	}
-	for _, element := range slice1 {
+	for _, element := range mainSlice {
 		if _, ok := checker[element]; ok {
 			continue
 		}
@@ -73,14 +73,14 @@ func SliceDiffInt(slice1 []int, slices ...[]int) (result []int) {
 	return
 }
 
-func SliceDiffUint(slice1 []uint, slices ...[]uint) (result []uint) {
+func SliceDiffUint(mainSlice []uint, slices ...[]uint) (result []uint) {
 	checker := make(map[uint]struct{}, 0)
 	for _, slice := range slices {
 		for _, element := range slice {
 			checker[element] = struct{}{}
 		}
 	}
-	for _, element := range slice1 {
+	for _, element := range mainSlice {
 		if _, ok := checker[element]; ok {
 			continue
 		}
@@ -90,14 +90,14 @@ func SliceDiffUint(slice1 []uint, slices ...[]uint) (result []uint) {
 	return
 }
 
-func SliceDiffInt8(slice1 []int8, slices ...[]int8) (result []int8) {
+func SliceDiffInt8(mainSlice []int8, slices ...[]int8) (result []int8) {
 	checker := make(map[int8]struct{}, 0)
 	for _, slice := range slices {
 		for _, element := range slice {
 			checker[element] = struct{}{}
 		}
 	}
-	for _, element := range slice1 {
+	for _, element := range mainSlice {
 		if _, ok := checker[element]; ok {
 			continue
 		}
@@ -107,14 +107,14 @@ func SliceDiffInt8(slice1 []int8, slices ...[]int8) (result []int8) {
 	return
 }
 
-func SliceDiffUint8(slice1 []uint8, slices ...[]uint8) (result []uint8) {
+func SliceDiffUint8(mainSlice []uint8, slices ...[]uint8) (result []uint8) {
 	checker := make(map[uint8]struct{}, 0)
 	for _, slice := range slices {
 		for _, element := range slice {
 			checker[element] = struct{}{}
 		}
 	}
-	for _, element := range slice1 {
+	for _, element := range mainSlice {
 		if _, ok := checker[element]; ok {
 			continue
 		}
@@ -124,14 +124,14 @@ func SliceDiffUint8(slice1 []uint8, slices ...[]uint8) (result []uint8) {
 	return
 }
 
-func SliceDiffInt16(slice1 []int16, slices ...[]int16) (result []int16) {
+func SliceDiffInt16(mainSlice []int16, slices ...[]int16) (result []int16) {
 	checker := make(map[int16]struct{}, 0)
 	for _, slice := range slices {
 		for _, element := range slice {
 			checker[element] = struct{}{}
 		}
 	}
-	for _, element := range slice1 {
+	for _, element := range mainSlice {
 		if _, ok := checker[element]; ok {
 			continue
 		}
@@ -141,14 +141,14 @@ func SliceDiffInt16(slice1 []int16, slices ...[]int16) (result []int16) {
 	return
 }
 
-func SliceDiffUint16(slice1 []uint16, slices ...[]uint16) (result []uint16) {
+func SliceDiffUint16(mainSlice []uint16, slices ...[]uint16) (result []uint16) {
 	checker := make(map[uint16]struct{}, 0)
 	for _, slice := range slices {
 		for _, element := range slice {
 			checker[element] = struct{}{}
 		}
 	}
-	for _, element := range slice1 {
+	for _, element := range mainSlice {
 		if _, ok := checker[element]; ok {
 			continue
 		}
@@ -158,14 +158,14 @@ func SliceDiffUint16(slice1 []uint16, slices ...[]uint16) (result []uint16) {
 	return
 }
 
-func SliceDiffInt32(slice1 []int32, slices ...[]int32) (result []int32) {
+func SliceDiffInt32(mainSlice []int32, slices ...[]int32) (result []int32) {
 	checker := make(map[int32]struct{}, 0)
 	for _, slice := range slices {
 		for _, element := range slice {
 			checker[element] = struct{}{}
 		}
 	}
-	for _, element := range slice1 {
+	for _, element := range mainSlice {
 		if _, ok := checker[element]; ok {
 			continue
 		}
@@ -175,14 +175,14 @@ func SliceDiffInt32(slice1 []int32, slices ...[]int32) (result []int32) {
 	return
 }
 
-func SliceDiffUint32(slice1 []uint32, slices ...[]uint32) (result []uint32) {
+func SliceDiffUint32(mainSlice []uint32, slices ...[]uint32) (result []uint32) {
 	checker := make(map[uint32]struct{}, 0)
 	for _, slice := range slices {
 		for _, element := range slice {
 			checker[element] = struct{}{}
 		}
 	}
-	for _, element := range slice1 {
+	for _, element := range mainSlice {
 		if _, ok := checker[element]; ok {
 			continue
 		}
@@ -192,14 +192,14 @@ func SliceDiffUint32(slice1 []uint32, slices ...[]uint32) (result []uint32) {
 	return
 }
 
-func SliceDiffInt64(slice1 []int64, slices ...[]int64) (result []int64) {
+func SliceDiffInt64(mainSlice []int64, slices ...[]int64) (result []int64) {
 	checker := make(map[int64]struct{}, 0)
 	for _, slice := range slices {
 		for _, element := range slice {
 			checker[element] = struct{}{}
 		}
 	}
-	for _, element := range slice1 {
+	for _, element := range mainSlice {
 		if _, ok := checker[element]; ok {
 			continue
 		}
@@ -209,14 +209,14 @@ func SliceDiffInt64(slice1 []int64, slices ...[]int64) (result []int64) {
 	return
 }
 
-func SliceDiffUint64(slice1 []uint64, slices ...[]uint64) (result []uint64) {
+func SliceDiffUint64(mainSlice []uint64, slices ...[]uint64) (result []uint64) {
 	checker := make(map[uint64]struct{}, 0)
 	for _, slice := range slices {
 		for _, element := range slice {
 			checker[element] = struct{}{}
 		}
 	}
-	for _, element := range slice1 {
+	for _, element := range mainSlice {
 		if _, ok := checker[element]; ok {
 			continue
 		}
@@ -226,14 +226,14 @@ func SliceDiffUint64(slice1 []uint64, slices ...[]uint64) (result []uint64) {
 	return
 }
 
-func SliceDiffFloat32(slice1 []float32, slices ...[]float32) (result []float32) {
+func SliceDiffFloat32(mainSlice []float32, slices ...[]float32) (result []float32) {
 	checker := make(map[float32]struct{}, 0)
 	for _, slice := range slices {
 		for _, element := range slice {
 			checker[element] = struct{}{}
 		}
 	}
-	for _, element := range slice1 {
+	for _, element := range mainSlice {
 		if _, ok := checker[element]; ok {
 			continue
 		}
@@ -243,14 +243,14 @@ func SliceDiffFloat32(slice1 []float32, slices ...[]float32) (result []float32) 
 	return
 }
 
-func SliceDiffFloat64(slice1 []float64, slices ...[]float64) (result []float64) {
+func SliceDiffFloat64(mainSlice []float64, slices ...[]float64) (result []float64) {
 	checker := make(map[float64]struct{}, 0)
 	for _, slice := range slices {
 		for _, element := range slice {
 			checker[element] = struct{}{}
 		}
 	}
-	for _, element := range slice1 {
+	for _, element := range mainSlice {
 		if _, ok := checker[element]; ok {
 			continue
 		}

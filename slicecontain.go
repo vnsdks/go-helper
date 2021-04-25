@@ -1,160 +1,91 @@
 package go_helper
 
-import (
-	"reflect"
-	"strings"
-)
+func SliceContain(slice interface{}, needle interface{}) bool {
+	_, result := SliceSearch(slice, needle)
 
-func SliceContain(slice interface{}, element interface{}) bool {
-	arrV := reflect.ValueOf(slice)
-	if arrV.Kind() != reflect.Slice {
-		return false
-	}
-	for i := 0; i < arrV.Len(); i++ {
-		if reflect.DeepEqual(arrV.Index(i).Interface(), element) {
-			return true
-		}
-	}
-
-	return false
+	return result
 }
 
-func SliceContainString(slice []string, element string) bool {
-	for _, v := range slice {
-		if v == element {
-			return true
-		}
-	}
+func SliceContainString(slice []string, needle string) bool {
+	_, result := SliceSearchString(slice, needle)
 
-	return false
+	return result
 }
 
-func SliceContainStringInsensitive(slice []string, element string) bool {
-	for _, v := range slice {
-		if strings.EqualFold(v, element) {
-			return true
-		}
-	}
+func SliceContainStringInsensitive(slice []string, needle string) bool {
+	_, result := SliceSearchStringInsensitive(slice, needle)
 
-	return false
+	return result
 }
 
-func SliceContainInt(slice []int, element int) bool {
-	for _, v := range slice {
-		if v == element {
-			return true
-		}
-	}
+func SliceContainInt(slice []int, needle int) bool {
+	_, result := SliceSearchInt(slice, needle)
 
-	return false
+	return result
 }
 
-func SliceContainUint(slice []uint, element uint) bool {
-	for _, v := range slice {
-		if v == element {
-			return true
-		}
-	}
+func SliceContainUint(slice []uint, needle uint) bool {
+	_, result := SliceSearchUint(slice, needle)
 
-	return false
+	return result
 }
 
-func SliceContainInt8(slice []int8, element int8) bool {
-	for _, v := range slice {
-		if v == element {
-			return true
-		}
-	}
+func SliceContainInt8(slice []int8, needle int8) bool {
+	_, result := SliceSearchInt8(slice, needle)
 
-	return false
+	return result
 }
 
-func SliceContainUint8(slice []uint8, element uint8) bool {
-	for _, v := range slice {
-		if v == element {
-			return true
-		}
-	}
+func SliceContainUint8(slice []uint8, needle uint8) bool {
+	_, result := SliceSearchUint8(slice, needle)
 
-	return false
+	return result
 }
 
-func SliceContainInt16(slice []int16, element int16) bool {
-	for _, v := range slice {
-		if v == element {
-			return true
-		}
-	}
+func SliceContainInt16(slice []int16, needle int16) bool {
+	_, result := SliceSearchInt16(slice, needle)
 
-	return false
+	return result
 }
 
-func SliceContainUint16(slice []uint16, element uint16) bool {
-	for _, v := range slice {
-		if v == element {
-			return true
-		}
-	}
+func SliceContainUint16(slice []uint16, needle uint16) bool {
+	_, result := SliceSearchUint16(slice, needle)
 
-	return false
+	return result
 }
 
-func SliceContainInt32(slice []int32, element int32) bool {
-	for _, v := range slice {
-		if v == element {
-			return true
-		}
-	}
+func SliceContainInt32(slice []int32, needle int32) bool {
+	_, result := SliceSearchInt32(slice, needle)
 
-	return false
+	return result
 }
 
-func SliceContainUint32(slice []uint32, element uint32) bool {
-	for _, v := range slice {
-		if v == element {
-			return true
-		}
-	}
+func SliceContainUint32(slice []uint32, needle uint32) bool {
+	_, result := SliceSearchUint32(slice, needle)
 
-	return false
+	return result
 }
 
-func SliceContainInt64(slice []int64, element int64) bool {
-	for _, v := range slice {
-		if v == element {
-			return true
-		}
-	}
+func SliceContainInt64(slice []int64, needle int64) bool {
+	_, result := SliceSearchInt64(slice, needle)
 
-	return false
+	return result
 }
 
-func SliceContainUint64(slice []uint64, element uint64) bool {
-	for _, v := range slice {
-		if v == element {
-			return true
-		}
-	}
+func SliceContainUint64(slice []uint64, needle uint64) bool {
+	_, result := SliceSearchUint64(slice, needle)
 
-	return false
+	return result
 }
 
-func SliceContainFloat32(slice []float32, element float32) bool {
-	for _, v := range slice {
-		if v == element {
-			return true
-		}
-	}
+func SliceContainFloat32(slice []float32, needle float32) bool {
+	_, result := SliceSearchFloat32(slice, needle)
 
-	return false
+	return result
 }
 
-func SliceContainFloat64(slice []float64, element float64) bool {
-	for _, v := range slice {
-		if v == element {
-			return true
-		}
-	}
+func SliceContainFloat64(slice []float64, needle float64) bool {
+	_, result := SliceSearchFloat64(slice, needle)
 
-	return false
+	return result
 }

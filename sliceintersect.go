@@ -10,7 +10,7 @@ func SliceIntersect(slices ...interface{}) (result []interface{}) {
 	}
 	arrV := reflect.ValueOf(slices[0])
 	if arrV.Kind() != reflect.Slice {
-		return
+		panic("parameters should be slices")
 	}
 	for i := 0; i < arrV.Len(); i++ {
 		result = append(result, arrV.Index(i).Interface())
@@ -19,7 +19,7 @@ func SliceIntersect(slices ...interface{}) (result []interface{}) {
 	for i := 1; i < len(slices); i++ {
 		arrV := reflect.ValueOf(slices[i])
 		if arrV.Kind() != reflect.Slice {
-			return nil
+			panic("parameters should be slices")
 		}
 		var newResult []interface{}
 		for i := 0; i < arrV.Len(); i++ {

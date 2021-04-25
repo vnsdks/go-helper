@@ -6,7 +6,7 @@ func SliceMerge(slices ...interface{}) (result []interface{}) {
 	for _, slice := range slices {
 		arrV := reflect.ValueOf(slice)
 		if arrV.Kind() != reflect.Slice {
-			continue
+			panic("parameters should be slices")
 		}
 		for i := 0; i < arrV.Len(); i++ {
 			result = append(result, arrV.Index(i).Interface())
@@ -20,7 +20,7 @@ func SliceMergeUnique(slices ...interface{}) (result []interface{}) {
 	for _, slice := range slices {
 		arrV := reflect.ValueOf(slice)
 		if arrV.Kind() != reflect.Slice {
-			continue
+			panic("parameters should be slices")
 		}
 		for i := 0; i < arrV.Len(); i++ {
 			element := arrV.Index(i).Interface()

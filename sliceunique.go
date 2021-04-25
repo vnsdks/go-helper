@@ -5,7 +5,7 @@ import "reflect"
 func SliceUnique(slice interface{}) (result []interface{}) {
 	arrV := reflect.ValueOf(slice)
 	if arrV.Kind() != reflect.Slice {
-		return
+		panic("parameter should be a slice")
 	}
 	for i := 0; i < arrV.Len(); i++ {
 		element := arrV.Index(i).Interface()

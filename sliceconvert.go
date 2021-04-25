@@ -6,19 +6,16 @@ import (
 )
 
 func SliceConvertInterface(slice interface{}) []interface{} {
-	s := reflect.ValueOf(slice)
-	if s.Kind() != reflect.Slice {
+	arrV := reflect.ValueOf(slice)
+	if arrV.Kind() != reflect.Slice {
+		panic("parameter should be a slice")
+	}
+	if arrV.IsNil() {
 		return nil
 	}
-
-	if s.IsNil() {
-		return nil
-	}
-
-	ret := make([]interface{}, s.Len())
-
-	for i := 0; i < s.Len(); i++ {
-		ret[i] = s.Index(i).Interface()
+	ret := make([]interface{}, arrV.Len())
+	for i := 0; i < arrV.Len(); i++ {
+		ret[i] = arrV.Index(i).Interface()
 	}
 
 	return ret
